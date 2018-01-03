@@ -1,7 +1,7 @@
 {
   "name": "carmood-bot",
   "version": "1.0.0",
-  "description": "A Node.JS twitter bot that posts cars with recognizable facial expressions",
+  "description": "A NodeJS twitter bot that posts cars with recognizable facial expressions",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
