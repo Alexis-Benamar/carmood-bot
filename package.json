@@ -1,0 +1,28 @@
+{
+  "name": "carmood-bot",
+  "version": "1.0.0",
+  "description": "A Node.JS twitter bot that posts cars with recognizable facial expressions",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexis-Benamar/carmood-bot.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot",
+    "node.js",
+    "cars"
+  ],
+  "author": "Alexis Benamar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexis-Benamar/carmood-bot/issues"
+  },
+  "homepage": "https://github.com/Alexis-Benamar/carmood-bot#readme",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
