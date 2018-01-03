@@ -17,8 +17,14 @@ const Twit = require("twit");
 const T = new Twit(config);
 let stream = T.stream('user');
 
-stream.on('tweet', setTimeout(rdm_car(eventMsg), 10000));
+stream.on('tweet', setTimeout(rdm_car(eventMsg), 0));
 
 function rdm_car(eventMsg) {
-    console.log('test timeout ' + eventMsg.text);
+    if (!(eventMsg.user.screen_name === 'vnrbot')) {
+        if (!(eventMsg.is_quote_status)) {
+            if (eventMsg.entities.hasOwnProperty('user_mentions') && eventMsg.entities.user_mentions.length > 0 && eventMsg.entities.user_mentions[0].screen_name === 'vnrbot') {
+                console.log('test timeout ' + eventMsg.text);
+            }
+        }
+    }
 }
