@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Alexis-Benamar/carmood-bot#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "twit": "^2.2.9"
   }
 }
