@@ -1,4 +1,6 @@
 
+console.log("\nhenlo\n");
+
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').load();
     console.log("// DEV //\n");
