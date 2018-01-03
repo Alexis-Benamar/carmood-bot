@@ -16,15 +16,42 @@ const fs = require('fs');
 const Twit = require("twit");
 const T = new Twit(config);
 let stream = T.stream('user');
+let requests = [];
 
-stream.on('tweet', setTimeout(rdm_car(eventMsg), 0));
+stream.on('tweet', addRequest);
 
-function rdm_car(eventMsg) {
-    if (!(eventMsg.user.screen_name === 'vnrbot')) {
+setInterval( function() {
+    if (requests.length > 0) {
+        req = requests[0];
+        requests.splice(requests.indexOf(req), 1);
+        setTimeout(handleRequest(req), 0);
+    }
+}, 5000);
+
+function addRequest(eventMsg) {
+    // React only if tweet is sent by someone else than vnrbot
+    if (!(eventMsg.user.screen_name === 'carmoodbot')) {
         if (!(eventMsg.is_quote_status)) {
-            if (eventMsg.entities.hasOwnProperty('user_mentions') && eventMsg.entities.user_mentions.length > 0 && eventMsg.entities.user_mentions[0].screen_name === 'vnrbot') {
-                console.log('test timeout ' + eventMsg.text);
+            // Confirm that the tweets has a 'carmoodbot' mention
+            // and is the first mention of the tweet
+            if (eventMsg.entities.hasOwnProperty('user_mentions') && eventMsg.entities.user_mentions.length > 0 && eventMsg.entities.user_mentions[0].screen_name === 'carmoodbot') {
+                requests.push({
+                    'id': eventMsg.timestamp,
+                    'from': eventMsg.user.screen_name,
+                    'text': eventMsg.text
+                });
+            }
+        } else {
+            // Fav the tweet that quoted it
+            if (eventMsg.quoted_status.user.screen_name === "carmoodbot") {
+                T.post("favorites/create", {id: eventMsg.id_str}, function(err, data, response) {
+                    console.log("+ Favorited successfully: " + eventMsg.text + "\n");
+                });
             }
         }
     }
+}
+
+function handleRequest(req) {
+    console.log("\nrequest: " + req.id + "\n from: " + req.from + "\ntext: " + req.text + "\n");
 }
