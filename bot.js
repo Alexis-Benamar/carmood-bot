@@ -31,11 +31,8 @@ setInterval( function() {
 }, 5000);
 
 function addRequest(eventMsg) {
-    // React only if tweet is sent by someone else than vnrbot
     if (!(eventMsg.user.screen_name === 'carmoodbot')) {
         if (!(eventMsg.is_quote_status)) {
-            // Confirm that the tweets has a 'carmoodbot' mention
-            // and is the first mention of the tweet
             if (eventMsg.entities.hasOwnProperty('user_mentions') && eventMsg.entities.user_mentions.length > 0 && eventMsg.entities.user_mentions[0].screen_name === 'carmoodbot') {
                 requests.push({
                     'id': eventMsg.timestamp,
@@ -44,7 +41,6 @@ function addRequest(eventMsg) {
                 });
             }
         } else {
-            // Fav the tweet that quoted it
             if (eventMsg.quoted_status.user.screen_name === "carmoodbot") {
                 T.post("favorites/create", {id: eventMsg.id_str}, function(err, data, response) {
                     console.log("+ Favorited successfully: " + eventMsg.text + "\n");
