@@ -51,5 +51,5 @@ function addRequest(eventMsg) {
 }
 
 function handleRequest(req) {
-    console.log("\nrequest: " + req.id + "\n from: " + req.from + "\ntext: " + req.text + "\n");
+    console.log("\nrequest: " + req.id + "\nfrom: " + req.from + "\ntext: " + req.text + "\n");
 }
