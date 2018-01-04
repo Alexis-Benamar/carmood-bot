@@ -8,6 +8,8 @@ _A Node.JS twitter bot that posts cars with recognizable facial expressions_
 2. '@carmoodbot .carpls \<mood\>' gives a car with selected mood
 3. '@carmoodbot .moods' gives a list of all the available moods
 
+<br>
+
 * Node.JS
 * Twit package
 ---
