@@ -16,5 +16,5 @@ _A Node.JS twitter bot that posts cars with recognizable facial expressions_
 
  Made with the help of [Daniel Schiffman's amazing tutorials](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6atTSxoRiVnSuOn6JHnq2yV)
 
-Copyright © 2018, [Alexis Benamar](https://alexis-benamar.github.io)
+Copyright © 2019, [Alexis Benamar](https://alexis-benamar.github.io)
 
